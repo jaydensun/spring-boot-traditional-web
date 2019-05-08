@@ -4,8 +4,6 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.Collections;
-
 @Configuration
 public class FilterConfiguration {
     @Bean
@@ -25,6 +23,8 @@ public class FilterConfiguration {
         bean.setFilter(new MyFilter2());
         bean.setOrder(1);
         bean.addUrlPatterns("/*");
+        bean.addInitParameter("filter2Param1", "filter2Param1Value");
+        bean.addInitParameter("filter2Param2", "filter2Param2Value");
         return bean;
     }
 }

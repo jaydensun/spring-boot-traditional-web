@@ -1,5 +1,6 @@
 package com.jayden.webtest.filter;
 
+import com.jayden.webtest.helper.Helper;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.*;
@@ -8,14 +9,19 @@ import java.io.IOException;
 @Slf4j
 public class MyFilter2 implements Filter {
 
+    private FilterConfig filterConfig;
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        log.info(MyFilter2.class + " init");
+        this.filterConfig = filterConfig;
+        log.info(MyFilter2.class + " init, filter params: " + Helper.filterConfigParamMap(filterConfig));
+        log.info(MyFilter2.class + " init, context params: " + Helper.servletContextParamMap(filterConfig.getServletContext()));
     }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        log.info(MyFilter2.class.getName() + " begin");
+        log.info(MyFilter2.class.getName() + " begin, filter params: " + Helper.filterConfigParamMap(filterConfig));
+        log.info(MyFilter2.class.getName() + " begin, context params: " + Helper.servletContextParamMap(filterConfig.getServletContext()));
         filterChain.doFilter(servletRequest, servletResponse);
         log.info(MyFilter2.class.getName() + " end");
     }

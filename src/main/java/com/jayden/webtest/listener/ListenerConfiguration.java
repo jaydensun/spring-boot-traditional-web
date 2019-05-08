@@ -1,13 +1,8 @@
 package com.jayden.webtest.listener;
 
-import com.jayden.webtest.filter.MyFilter1;
-import com.jayden.webtest.filter.MyFilter2;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.Collections;
 
 @Configuration
 public class ListenerConfiguration {

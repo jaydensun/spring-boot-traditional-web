@@ -1,5 +1,6 @@
 package com.jayden.webtest.servlet;
 
+import com.jayden.webtest.helper.Helper;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.ServletConfig;
@@ -8,14 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @Slf4j
 public class MyServlet2 extends HttpServlet {
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-        log.info(MyServlet2.class + " init(config)");
         super.init(config);
+        log.info(MyServlet2.class + " init(config), servlet params: " + Helper.servletConfigParamMap(config));
+        log.info(MyServlet2.class + " init(config), context params: " + Helper.servletContextParamMap(getServletContext()));
     }
 
     @Override
@@ -26,6 +29,9 @@ public class MyServlet2 extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().append(MyServlet2.class.getName());
+        PrintWriter writer = resp.getWriter();
+        writer.append(MyServlet2.class.getName()).append(" servlet params ").append(Helper.servletConfigParamMap(getServletConfig()).toString());
+        writer.append("\n");
+        writer.append(MyServlet2.class.getName()).append(" context params ").append(Helper.servletContextParamMap(getServletContext()).toString());
     }
 }

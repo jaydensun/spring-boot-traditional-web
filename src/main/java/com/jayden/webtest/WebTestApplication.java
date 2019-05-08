@@ -8,8 +8,8 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 @ServletComponentScan
 public class WebTestApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(WebTestApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(WebTestApplication.class, args);
+    }
 
 }

@@ -21,6 +21,9 @@ public class ServletConfiguration {
         bean.setServlet(new MyServlet2());
         bean.setName(MyServlet2.class.getSimpleName());
         bean.addUrlMappings("/myservlet2");
+        bean.addInitParameter("servlet2Param1", "servlet2Param1Value");
+        bean.addInitParameter("servlet2Param2", "servlet2Param2Value");
+        bean.setLoadOnStartup(1);
         return bean;
     }
 }
