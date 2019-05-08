@@ -14,7 +14,7 @@ public class FilterConfiguration {
         bean.setName(MyFilter1.class.getSimpleName());
         bean.setFilter(new MyFilter1());
         bean.setOrder(2);
-        bean.setUrlPatterns(Collections.singleton("/*"));
+        bean.addUrlPatterns("/*");
         return bean;
     }
 
@@ -24,7 +24,7 @@ public class FilterConfiguration {
         bean.setName(MyFilter2.class.getSimpleName());
         bean.setFilter(new MyFilter2());
         bean.setOrder(1);
-        bean.setUrlPatterns(Collections.singleton("/*"));
+        bean.addUrlPatterns("/*");
         return bean;
     }
 }
